@@ -17,6 +17,9 @@ function! FoldCCtext() "{{{
     let &fdc = v:foldlevel + 1
   endif
   let headline = getline(v:foldstart)
+  let next_line = getline(v:foldstart + 1)
+  let headline = headline . ' / ' . next_line
+
   let head = g:foldCCtext_head=='' ? '' : eval(g:foldCCtext_head)
   let tail = g:foldCCtext_tail=='' ? '' : ' '. eval(g:foldCCtext_tail)
   let headline = s:_adjust_headline(headline, strlen(head)+strlen(tail))
